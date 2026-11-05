@@ -1,0 +1,14 @@
+[
+  { "id": "auth-api", "name": "Auth API", "team": "Identity", "region": "ap-south-1", "status": "operational", "uptime": 99.99, "latencyMs": 42 },
+  { "id": "payments", "name": "Payments Gateway", "team": "Billing", "region": "ap-south-1", "status": "degraded", "uptime": 99.71, "latencyMs": 388 },
+  { "id": "search", "name": "Search Indexer", "team": "Discovery", "region": "us-east-1", "status": "operational", "uptime": 99.95, "latencyMs": 120 },
+  { "id": "notify", "name": "Notifications", "team": "Messaging", "region": "eu-west-1", "status": "down", "uptime": 98.42, "latencyMs": 0 },
+  { "id": "media-cdn", "name": "Media CDN", "team": "Platform", "region": "global", "status": "operational", "uptime": 100, "latencyMs": 18 },
+  { "id": "ledger", "name": "Ledger Service", "team": "Billing", "region": "ap-south-1", "status": "operational", "uptime": 99.98, "latencyMs": 64 },
+  { "id": "risk", "name": "Risk Engine", "team": "Security", "region": "ap-south-1", "status": "degraded", "uptime": 99.62, "latencyMs": 510 },
+  { "id": "audit-log", "name": "Audit Log", "team": "Security", "region": "eu-west-1", "status": "operational", "uptime": 99.97, "latencyMs": 75 },
+  { "id": "webhooks", "name": "Webhook Relay", "team": "Messaging", "region": "us-east-1", "status": "operational", "uptime": 99.9, "latencyMs": 96 },
+  { "id": "reports", "name": "Reports Export", "team": "Analytics", "region": "us-east-1", "status": "down", "uptime": 97.8, "latencyMs": 0 },
+  { "id": "feature-flags", "name": "Feature Flags", "team": "Platform", "region": "global", "status": "operational", "uptime": 99.99, "latencyMs": 22 },
+  { "id": "sessions", "name": "Session Store", "team": "Identity", "region": "ap-south-1", "status": "operational", "uptime": 99.96, "latencyMs": 9 }
+]
