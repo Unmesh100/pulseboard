@@ -11,8 +11,10 @@ npm test       # node --test
 
 | Endpoint            | Returns                                      |
 | ------------------- | -------------------------------------------- |
-| `GET /api/services` | `{ services: Service[] }`                    |
+| `GET /api/services` | `{ services: Service[] }`, optionally filtered with `?status=operational\|degraded\|down` and `?q=<text>` (case-insensitive match on name or team). An invalid `status` returns 400. |
 | `GET /api/summary`  | `{ total, counts: { operational, degraded, down }, overall }` |
+
+The dashboard has a search box and status chips; the active filters are kept in the URL (e.g. `/?status=down`).
 
 Service data lives in `data/services.json` (override with `PULSEBOARD_DATA`).
 

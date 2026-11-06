@@ -20,6 +20,11 @@
 
       <section class="summary" id="summary" aria-label="Status summary"></section>
 
+      <form id="filters" class="filters" role="search" onsubmit="return false">
+        <input id="q" type="search" placeholder="Search by service or team" aria-label="Search services" autocomplete="off" />
+        <div id="status-chips" class="chips" role="group" aria-label="Filter by status"></div>
+      </form>
+
       <section id="services" class="grid" aria-label="Services"></section>
     </main>
 
