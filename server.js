@@ -2,7 +2,7 @@ import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { extname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadServices, summarize } from './lib/services.js';
+import { InvalidFilterError, filterServices, loadServices, summarize } from './lib/services.js';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const DATA_FILE = process.env.PULSEBOARD_DATA ?? join(root, 'data', 'services.json');
@@ -29,7 +29,11 @@ export function createApp({ dataFile = DATA_FILE } = {}) {
 
       if (url.pathname === '/api/services') {
         const services = await loadServices(dataFile);
-        return sendJson(res, 200, { services });
+        const filtered = filterServices(services, {
+          status: url.searchParams.get('status') ?? undefined,
+          q: url.searchParams.get('q') ?? undefined,
+        });
+        return sendJson(res, 200, { services: filtered });
       }
 
       if (url.pathname === '/api/summary') {
@@ -45,6 +49,7 @@ export function createApp({ dataFile = DATA_FILE } = {}) {
       res.writeHead(200, { 'content-type': MIME[extname(file)] });
       return res.end(body);
     } catch (err) {
+      if (err instanceof InvalidFilterError) return sendJson(res, 400, { error: err.message });
       if (err.code === 'ENOENT') return sendJson(res, 404, { error: 'not found' });
       console.error(err);
       return sendJson(res, 500, { error: 'internal error' });
